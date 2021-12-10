@@ -25,20 +25,19 @@ public class SchedulerService {
     @Autowired
     private ProgramRepository programRepository;
 
-    //TODO: deben retornar un flux de programDate Flux<ProgramDate>
+    //DONE: deben retornar un flux de programDate Flux<ProgramDate>
     public Flux<ProgramDate> generateCalendar(String programId, LocalDate startDate) {
         var endDate = new AtomicReference<>(LocalDate.from(startDate));
         final AtomicInteger[] pivot = {new AtomicInteger()};
         final int[] index = {0};
 
-        //TODO: debe pasarlo a reactivo, no puede trabaja elementos bloqueantes
-        //TODO: trabajar el map reactivo y no deben colectar
+        //DONE: debe pasarlo a reactivo, no puede trabaja elementos bloqueantes
+        //DONE: trabajar el map reactivo y no deben colectar
         var program = programRepository.findById(programId);
         return program
                 .flatMapMany(programa-> Flux.fromStream(getDurationOf(programa)))
                 .map(toProgramDate(startDate, endDate, pivot[0], index))
                 .switchIfEmpty(Mono.error(new RuntimeException("El programa academnico no existe")));
-
     }
 
     //No tocar
