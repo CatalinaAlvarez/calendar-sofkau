@@ -32,7 +32,7 @@ class SchedulerServiceTest {
 
 
     @Test
-        //TODO: modificar el test para que el act sea reactivo, usando stepverifier
+        //DONE: modificar el test para que el act sea reactivo, usando stepverifier
     void generateCalendar() {
         //Arrange
         var programId = "xxxx";
@@ -41,7 +41,9 @@ class SchedulerServiceTest {
         Program program = getProgramDummy();
 
         Mockito.when(repository.findById(programId)).thenReturn(Mono.just(program));
-        //TODO: hacer una subscripción de el servicio reactivo
+
+        //DONE: hacer una subscripción de el servicio reactivo // Se realiza mediante el stepverifier
+
         Flux<ProgramDate> response = schedulerService.generateCalendar(programId, startDate);
 
         //DONE: hacer de otro modo
