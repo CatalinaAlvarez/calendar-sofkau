@@ -20,5 +20,4 @@ public class SchedulerServiceController {
         var startDate = LocalDate.of(2022, 1, 1);
         return schedulerService.generateCalendar(id,startDate);
     }
-
 }

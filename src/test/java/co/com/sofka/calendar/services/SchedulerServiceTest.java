@@ -5,8 +5,6 @@ import co.com.sofka.calendar.collections.Program;
 import co.com.sofka.calendar.collections.Time;
 import co.com.sofka.calendar.model.ProgramDate;
 import co.com.sofka.calendar.repositories.ProgramRepository;
-import com.google.gson.Gson;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -48,58 +46,58 @@ class SchedulerServiceTest {
 
         //DONE: hacer de otro modo
         StepVerifier.create(response)
-                .expectNextMatches(programDate -> {
-                    return programDate.getDate().toString().equals("2022-01-03")
-                            && programDate.getCategoryName().equals("Principios");
-                })
-                .expectNextMatches(programDate -> {
-                    return programDate.getDate().toString().equals("2022-01-04")
-                            && programDate.getCategoryName().equals("Principios");
-                })
-                .expectNextMatches(programDate -> {
-                    return programDate.getDate().toString().equals("2022-01-05")
-                            && programDate.getCategoryName().equals("Bases");
-                })
-                .expectNextMatches(programDate -> {
-                    return programDate.getDate().toString().equals("2022-01-06")
-                            && programDate.getCategoryName().equals("Bases");
-                })
-                .expectNextMatches(programDate -> {
-                    return programDate.getDate().toString().equals("2022-01-07")
-                            && programDate.getCategoryName().equals("Fundamentos");
-                })
-                .expectNextMatches(programDate -> {
-                    return programDate.getDate().toString().equals("2022-01-10")
-                            && programDate.getCategoryName().equals("Fundamentos");
-                })
-                .expectNextMatches(programDate -> {
-                    return programDate.getDate().toString().equals("2022-01-11")
-                            && programDate.getCategoryName().equals("Fundamentos");
-                })
-                .expectNextMatches(programDate -> {
-                    return programDate.getDate().toString().equals("2022-01-12")
-                            && programDate.getCategoryName().equals("Fundamentos");
-                })
-                .expectNextMatches(programDate -> {
-                    return programDate.getDate().toString().equals("2022-01-13")
-                            && programDate.getCategoryName().equals("Fundamentos avazandos");
-                })
-                .expectNextMatches(programDate -> {
-                    return programDate.getDate().toString().equals("2022-01-14")
-                            && programDate.getCategoryName().equals("Fundamentos avazandos");
-                })
-                .expectNextMatches(programDate -> {
-                    return programDate.getDate().toString().equals("2022-01-17")
-                            && programDate.getCategoryName().equals("Fundamentos avazandos");
-                })
-                .expectNextMatches(programDate -> {
-                    return programDate.getDate().toString().equals("2022-01-18")
-                            && programDate.getCategoryName().equals("Fundamentos avazandos");
-                })
-                .expectNextMatches(programDate -> {
-                    return programDate.getDate().toString().equals("2022-01-19")
-                            && programDate.getCategoryName().equals("Fundamentos avazandos");
-                })
+                .expectNextMatches(programDate ->
+                     programDate.getDate().toString().equals("2022-01-03")
+                            && programDate.getCategoryName().equals("Principios")
+                )
+                .expectNextMatches(programDate ->
+                    programDate.getDate().toString().equals("2022-01-04")
+                            && programDate.getCategoryName().equals("Principios")
+                )
+                .expectNextMatches(programDate ->
+                    programDate.getDate().toString().equals("2022-01-05")
+                            && programDate.getCategoryName().equals("Bases")
+                )
+                .expectNextMatches(programDate ->
+                    programDate.getDate().toString().equals("2022-01-06")
+                            && programDate.getCategoryName().equals("Bases")
+                )
+                .expectNextMatches(programDate ->
+                    programDate.getDate().toString().equals("2022-01-07")
+                            && programDate.getCategoryName().equals("Fundamentos")
+                )
+                .expectNextMatches(programDate ->
+                    programDate.getDate().toString().equals("2022-01-10")
+                            && programDate.getCategoryName().equals("Fundamentos")
+                )
+                .expectNextMatches(programDate ->
+                    programDate.getDate().toString().equals("2022-01-11")
+                            && programDate.getCategoryName().equals("Fundamentos")
+                )
+                .expectNextMatches(programDate ->
+                    programDate.getDate().toString().equals("2022-01-12")
+                            && programDate.getCategoryName().equals("Fundamentos")
+                )
+                .expectNextMatches(programDate ->
+                    programDate.getDate().toString().equals("2022-01-13")
+                            && programDate.getCategoryName().equals("Fundamentos avazandos")
+                )
+                .expectNextMatches(programDate ->
+                    programDate.getDate().toString().equals("2022-01-14")
+                            && programDate.getCategoryName().equals("Fundamentos avazandos")
+                )
+                .expectNextMatches(programDate ->
+                    programDate.getDate().toString().equals("2022-01-17")
+                            && programDate.getCategoryName().equals("Fundamentos avazandos")
+                )
+                .expectNextMatches(programDate ->
+                    programDate.getDate().toString().equals("2022-01-18")
+                            && programDate.getCategoryName().equals("Fundamentos avazandos")
+                )
+                .expectNextMatches(programDate ->
+                    programDate.getDate().toString().equals("2022-01-19")
+                            && programDate.getCategoryName().equals("Fundamentos avazandos")
+                )
                 .verifyComplete();
 
         StepVerifier.create(response).expectNextCount(13).verifyComplete(); //DONE: hacer de otro modo
@@ -150,6 +148,5 @@ class SchedulerServiceTest {
     private String getSnapResult() {
         return "[{\"categoryName\":\"Principios\",\"date\":{\"year\":2022,\"month\":1,\"day\":3}},{\"categoryName\":\"Principios\",\"date\":{\"year\":2022,\"month\":1,\"day\":4}},{\"categoryName\":\"Bases\",\"date\":{\"year\":2022,\"month\":1,\"day\":5}},{\"categoryName\":\"Bases\",\"date\":{\"year\":2022,\"month\":1,\"day\":6}},{\"categoryName\":\"Fundamentos\",\"date\":{\"year\":2022,\"month\":1,\"day\":7}},{\"categoryName\":\"Fundamentos\",\"date\":{\"year\":2022,\"month\":1,\"day\":10}},{\"categoryName\":\"Fundamentos\",\"date\":{\"year\":2022,\"month\":1,\"day\":11}},{\"categoryName\":\"Fundamentos\",\"date\":{\"year\":2022,\"month\":1,\"day\":12}},{\"categoryName\":\"Fundamentos avazandos\",\"date\":{\"year\":2022,\"month\":1,\"day\":13}},{\"categoryName\":\"Fundamentos avazandos\",\"date\":{\"year\":2022,\"month\":1,\"day\":14}},{\"categoryName\":\"Fundamentos avazandos\",\"date\":{\"year\":2022,\"month\":1,\"day\":17}},{\"categoryName\":\"Fundamentos avazandos\",\"date\":{\"year\":2022,\"month\":1,\"day\":18}},{\"categoryName\":\"Fundamentos avazandos\",\"date\":{\"year\":2022,\"month\":1,\"day\":19}}]";
     }
-
 
 }
